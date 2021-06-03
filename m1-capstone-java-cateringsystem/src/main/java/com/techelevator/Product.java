@@ -1,13 +1,23 @@
 package com.techelevator;
 
 public class Product {
+
+    //instance variables
     private  String name;
     private  String type;
     private  String code;
     private  double price;
-    private  int quantity;
+    private  int quantity = 50;
+
+    public Product(String code, String name, double price, String type) {
+        this.code = code;
+        this.name = name;
+        this.price = price;
+        this.type = type;
+    }
 
     public Product() {
+
     }
 
     public String getName() {
