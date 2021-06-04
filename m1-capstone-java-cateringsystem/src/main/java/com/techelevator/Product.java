@@ -3,10 +3,10 @@ package com.techelevator;
 public class Product {
 
     //instance variables
-    private  String name;
-    private  String type;
     private  String code;
+    private  String name;
     private  double price;
+    private  String type;
     private  int quantity = 50;
 
     public Product(String code, String name, double price, String type) {

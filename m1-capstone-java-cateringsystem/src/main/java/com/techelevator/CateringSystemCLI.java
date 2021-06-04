@@ -29,31 +29,29 @@ public class CateringSystemCLI {
 	}
 	
 	public void run() {
-//
-//		String response = ui.printMainMenu();
-//
-//		if(response.equals("1")) {
-//
-////			try {
-////				myProductList = reader.loadData();
-////			}
-////			catch (FileNotFoundException e) {
-////				e.printStackTrace();
-////			}
-//
-//		} else if (response.equals("2")) {
-//			//jump to Submenu
-//
-//
-//		} else if(response.equals("3")) {
-//			//Quit
-//
-//		}
-//
+
+		String response = ui.printMainMenu();
+
+		if (response.equals("1")) {
+			List<Product> everything = inventory.retrieveAllItems();
+			ui.printListOfItems(everything);
+		} else if (response.equals("2")) {
+			String choice = ui.printSubMenu();
+			if (choice.equals("1")) {
+				System.out.println("add money"); //for test - need to connect to UI later
+			} else if (choice.equals("2")) {
+				System.out.println("select product");//for test - need to connect to UI later
+			} else if (choice.equals("3")) {
+				System.out.println("Complete Transaction");//for test - need to connect to UI later
+			}
+
+		} else if(response.equals("3")) {
+			ui.quit();
+		}
+
+		}
+
+
 	}
-	
-	
 
 
-
-}

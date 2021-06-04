@@ -3,8 +3,7 @@ package com.techelevator.view;
 import com.techelevator.Product;
 
 import java.io.FileNotFoundException;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Inventory {
 
@@ -14,6 +13,19 @@ public class Inventory {
     public Inventory() throws FileNotFoundException {
         readerFile = new ReaderFile();
         inventoryMap = readerFile.loadData();
+    }
+
+    public List<Product> retrieveAllItems() {
+
+        List<Product> everything = new ArrayList<>();
+
+        Set<String> keys = inventoryMap.keySet();
+
+        for( String key: keys) {
+            everything.add(inventoryMap.get(key));
+        }
+
+        return everything;
     }
 
 

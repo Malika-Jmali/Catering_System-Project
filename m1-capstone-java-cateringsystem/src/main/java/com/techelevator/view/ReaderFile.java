@@ -28,18 +28,32 @@ public class ReaderFile {
             String record = scanner.nextLine();
             String[] fields = record.split("\\|");
 
-            Product product = new Appetizer();
-//            Product product = new Product(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
-            allItems.put(fields[0], product);
+            if (fields[3].equals("A")) {
+                Product product = new Appetizer(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                allItems.put(fields[0], product);
+            }
+            if (fields[3].equals("B")) {
+                Product product1 = new Beverage(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                allItems.put(fields[0], product1);
+            }
+            if (fields[3].equals("D")) {
+                Product product2 = new Dessert(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                allItems.put(fields[0], product2);
+            }
+            if (fields[3].equals("E")) {
+                Product product3 = new Entree(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                allItems.put(fields[0], product3);
+            }
+
         }
 
         return allItems;
 
 }
 
-//    public static void main(String[] args) {
-//
-//    }
+    public static void main(String[] args) {
+
+    }
 
 
 
