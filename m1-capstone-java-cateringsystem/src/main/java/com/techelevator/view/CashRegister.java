@@ -1,25 +1,33 @@
 package com.techelevator.view;
 
+import com.techelevator.CateringSystemCLI;
+
 public class CashRegister {
 
-//instance variable
-   private double balance;
+    //instance variable
+   private double balance = 0;
 
+
+   //constructor
    public CashRegister(double balance) {
-        this.balance = balance;
+       this.balance = balance;
     }
 
+    //getter/setter
     public double getBalance() {
-        return balance;
+       return balance;
     }
 
     public void setBalance(double balance) {
-        this.balance = balance;
+       this.balance = balance;
     }
+
+    //methods
     public double addMoney(double dollar){
         balance= balance + dollar;
         return balance;
     }
+
     public double giveChange(double totalCost){
        balance = balance - totalCost;
        return balance;
