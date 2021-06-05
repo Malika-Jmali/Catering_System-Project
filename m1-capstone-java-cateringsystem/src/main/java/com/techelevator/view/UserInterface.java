@@ -27,18 +27,13 @@ public class UserInterface{
         System.out.println("(1) Add Money");
         System.out.println("(2) Select Products");
         System.out.println("(3) Complete Transaction");
+
         System.out.println("Your current balance is " + balance);
 
         String choice= scanner.nextLine();
         return choice;
-        //toString method to get current account balance
     }
 
-    public String askAgain() {
-        System.out.println("Please select your choice again: ");
-        String choice= scanner.nextLine();
-        return choice;
-    }
 
     public String printItemCode(){
         System.out.println("Please select the item code ex:(A1): ");
@@ -55,9 +50,9 @@ public class UserInterface{
     }
 
 
-    public double askToAddMoney() {
+    public int askToAddMoney() {
         System.out.println("How much money would you like to add in whole dollars? ");
-        Double moneyToAdd = scanner.nextDouble();
+        int moneyToAdd = scanner.nextInt();
         scanner.nextLine();
         return moneyToAdd;
     }
@@ -88,6 +83,10 @@ public class UserInterface{
 
     public void printSoldOutMessage() {
         System.out.println("The item you have selected is sold out.");
+    }
+
+    public void printItemDoesNotExist() {
+        System.out.println("The product code you have selected does not exist. \n");
     }
 
 }

@@ -7,18 +7,26 @@ public class Product {
     private  String name;
     private  double price;
     private  String type;
-    private  int quantity = 0;
+    private  int quantity;
 
-    public Product(String code, String name, double price, String type) {
+    public Product(String code, String name, double price, String type, int quantity) {
         this.code = code;
         this.name = name;
         this.price = price;
         this.type = type;
+        this.quantity = quantity;
     }
 
     public Product() {
 
     }
+
+    //method
+    public int updateQuantity(int quantitySelected) {
+        quantity = quantity - quantitySelected;
+        return quantity;
+    }
+
 
     public String getName() {
         return name;
@@ -36,9 +44,7 @@ public class Product {
         return type;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
+    public int getQuantity() { return quantity; }
 
     public void setName(String name) {
         this.name = name;
@@ -59,6 +65,7 @@ public class Product {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
+
     public String toString(){
         return getName()+ getType()+ getPrice()+ getQuantity()+ getCode();
     }

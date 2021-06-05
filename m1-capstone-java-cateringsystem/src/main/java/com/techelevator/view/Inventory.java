@@ -33,16 +33,13 @@ public class Inventory {
         List<Product> itemByCode = new ArrayList<>();
 
         for(Product product : inventoryMap.values()) {
-            if(product.getCode().equals(productCode)) {
+            if (product.getCode().equals(productCode)) {
                 itemByCode.add(product);
             }
+
         }
-        return itemByCode;
-
+            return itemByCode;
     }
-
-
-
 
 
 

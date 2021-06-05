@@ -13,6 +13,7 @@ public class CateringSystemCLI {
 	private UserInterface ui;
 	private Inventory inventory;
 	private CashRegister register;
+	private Product productItem;
 
 //	private final String DISPLAY_ALL_CATERING_ITEMS = "1";
 //	private final String ORDER = "2";
@@ -23,6 +24,7 @@ public class CateringSystemCLI {
 		try {
 			inventory = new Inventory();
 			register = new CashRegister(0);
+			productItem = new Product();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -50,8 +52,8 @@ public class CateringSystemCLI {
 
 					if (choice.equals("1")) {
 
-						Double money = ui.askToAddMoney();
-						register.addMoney(money); //what comes after is a mystery
+						int money = ui.askToAddMoney();
+						register.addMoney(money);
 
 					}
 					else if (choice.equals("2")) {
@@ -59,16 +61,21 @@ public class CateringSystemCLI {
 						ui.printListOfItems(everything);
 						String itemCode = ui.printItemCode(); //Customer returns the selected item by itemCode
 						List<Product> product = inventory.retrieveItemByProductCode(itemCode);
-						ui.printListOfItems(product);
+//						if(product == null) {
+//							ui.printItemDoesNotExist();
+//						} else {
+							ui.printListOfItems(product);
+							int itemQuantity = ui.askQuantity();
+							productItem.updateQuantity(itemQuantity);
 
-						int itemQuantity = ui.askQuantity();
 
-						if (itemQuantity > product.size()) { //Still not sure if product.size() is coded correctly
-							ui.printSoldOutMessage();
-						}
-						if (itemQuantity <= product.size() && product != null) { 
-
-						}
+//							if (itemQuantity > productItem.getQuantity()) { //Still not sure if product.size() is coded correctly
+//								ui.printSoldOutMessage();
+//							}
+//							if (itemQuantity <= product.size() && product != null) {
+//
+//							}
+//						}
 
 
 					}

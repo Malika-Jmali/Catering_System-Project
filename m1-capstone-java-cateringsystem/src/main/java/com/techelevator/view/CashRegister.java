@@ -1,6 +1,5 @@
 package com.techelevator.view;
 
-import com.techelevator.CateringSystemCLI;
 
 public class CashRegister {
 
@@ -23,9 +22,18 @@ public class CashRegister {
     }
 
     //methods
-    public double addMoney(double dollar){
-        balance= balance + dollar;
+    public double addMoney(double dollar) {
+        if (balance + dollar > 5000) {
+            balance = balance;
+        } else {
+            balance = balance + dollar;
+        }
         return balance;
+    }
+
+    public double minusMoney(double price, int quantity) {
+       balance = balance - (price * quantity);
+       return balance;
     }
 
     public double giveChange(double totalCost){
