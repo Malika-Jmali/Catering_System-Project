@@ -22,9 +22,8 @@ public class Product {
     }
 
     //method
-    public int updateQuantity(int quantitySelected) {
-        quantity = quantity - quantitySelected;
-        return quantity;
+    public int addQuantity(int quantitySelected) {
+        return quantitySelected;
     }
 
 

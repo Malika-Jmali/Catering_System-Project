@@ -82,12 +82,33 @@ public class UserInterface{
         }
     }
 
+    public void printReport(List<Product> allShoppingList) {
+        System.out.println("");
+        System.out.printf("Quantity\tProduct Type\t\tProduct Name\t\tPrice/Item\t\tTotal Price %n");
+        System.out.printf("--------------------------------------------------------------------------------%n");
+        for (Product product: allShoppingList) {
+            //create new variable, get the integer into double and multiply
+            System.out.printf("%-11d %-16s %-26s $%-12.2f $%-3d %n", product.getQuantity(),product.toString(),product.getName(),product.getPrice(),product.getQuantity());
+            //sum = sum + something
+            System.out.println("");
+        }
+        //System.out.println(); print out the total sum
+    }
+
     public void quit() {
         System.out.println("Thank you for visiting!!");
     }
 
     public void printSoldOutMessage() {
         System.out.println("The item you have selected is sold out.");
+    }
+
+    public void printInsufficientStockMessage() {
+        System.out.println("The item you have selected does not have enough stock. ");
+    }
+
+    public void printInsufficientBalance() {
+        System.out.println("Insufficient balance. Please add more money! ");
     }
 
     public void printItemDoesNotExist() {

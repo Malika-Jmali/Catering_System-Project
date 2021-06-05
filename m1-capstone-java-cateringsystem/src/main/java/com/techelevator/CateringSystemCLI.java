@@ -3,6 +3,7 @@ package com.techelevator;
 import com.techelevator.view.*;
 
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CateringSystemCLI {
@@ -67,22 +68,39 @@ public class CateringSystemCLI {
 						} else {
 							ui.printProductByCode(productByCode); //if found
 							int itemQuantity = ui.askQuantity();
-							cart.addItems(productByCode);
 
-							productByCode.updateQuantity(itemQuantity);
-							register.minusMoney(productByCode.getPrice(), itemQuantity);
-
-							if (itemQuantity > productByCode.getQuantity()) { //need to make sure no money is charged if sold out
-								//and quantity doesn't go to negative....
+							if (productByCode.getQuantity() == 0) { //if the product is sold out (quantity = 0)
 								ui.printSoldOutMessage();
 							}
+							else if (itemQuantity > productByCode.getQuantity()) { //if quantity requested to more than what is available
+								ui.printInsufficientStockMessage();
+							}
+							else if (productByCode.getPrice() * itemQuantity > register.getBalance()) { //if the total price > current balance
+								ui.printInsufficientBalance();
+							}
+							else { //if all goes well
+								productByCode.setQuantity(productByCode.getQuantity() - itemQuantity);
+								register.minusMoney(productByCode.getPrice(), itemQuantity);
+								Product add = new Product(productItem.getCode(), productItem.getName(), productItem.getPrice(), productItem.getType());
+								add.setQuantity(itemQuantity);
+								cart.addItems(add); //be careful with this code
 
+//								ShoppingCart add = new ShoppingCart();
+//								add.addItems(productByCode);
+
+
+							}
 						}
 
 					}
 					else if (choice.equals("3")) {
-						System.out.println("Complete Transaction");//for test - need to connect to UI later
+						List<Product> customerCart = cart.getShoppingCartItem();
+						ui.printReport(customerCart);
+
+
 						isSubMenuRunning = false;
+						register.setBalance(0); //?
+						cart.emptyCart();
 					}
 				}
 

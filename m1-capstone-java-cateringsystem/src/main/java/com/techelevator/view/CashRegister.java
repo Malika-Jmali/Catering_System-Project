@@ -31,14 +31,21 @@ public class CashRegister {
         return this.balance;
     }
 
-    public double minusMoney(double price, int quantity) {
-       this.balance = balance - (price * quantity);
-       return balance;
+    public double minusMoney(double price, int quantity) { //does not change balance if it's gonna go under 0
+        if (balance - (price * quantity) < 0) {
+            return balance;
+        } else {
+            return balance = balance - (price * quantity);
+        }
     }
 
     public double giveChange(double totalCost){
        balance = balance - totalCost;
        return balance;
+    }
+
+    public double priceTimesQuantity(double price, int quantity) {
+       return price * quantity;
     }
 // using the smallest amount of bills and coins possible
     // The customer’s current balance should be updated to \$0 remaining.

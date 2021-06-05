@@ -11,8 +11,8 @@ public class Appetizer extends Product {
     }
 
     @Override
-    public int updateQuantity(int quantitySelected) {
-        return quantity -= quantitySelected;
+    public int addQuantity(int quantitySelected) {
+        return quantitySelected;
     }
 
     @Override
@@ -25,7 +25,10 @@ public class Appetizer extends Product {
         this.quantity = quantity;
     }
 
-
+    @Override
+    public String toString() {
+        return "Appetizer";
+    }
 
 
 }
