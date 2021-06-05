@@ -2,11 +2,12 @@ package com.techelevator.view;
 
 import com.techelevator.Product;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ShoppingCart {
 
-    private List<Product> productsSelected;
+    private List<Product> productsSelected = new ArrayList<>();
 
     public void addItems(Product items){
 

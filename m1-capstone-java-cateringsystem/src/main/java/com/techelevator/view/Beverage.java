@@ -3,8 +3,26 @@ package com.techelevator.view;
 import com.techelevator.Product;
 
 public class Beverage extends Product {
-    public Beverage(String code, String name, double price, String type, int quantity) {
-        super(code, name, price, type, quantity);
+
+    private int quantity;
+
+    public Beverage(String code, String name, double price, String type) {
+        super(code, name, price, type);
+    }
+
+    @Override
+    public int updateQuantity(int quantitySelected) {
+        return quantity -= quantitySelected;
+    }
+
+    @Override
+    public int getQuantity() {
+        return quantity;
+    }
+
+    @Override
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 
 }

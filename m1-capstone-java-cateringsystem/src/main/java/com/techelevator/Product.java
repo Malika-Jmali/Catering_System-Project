@@ -9,7 +9,7 @@ public class Product {
     private  String type;
     private  int quantity;
 
-    public Product(String code, String name, double price, String type, int quantity) {
+    public Product(String code, String name, double price, String type) {
         this.code = code;
         this.name = name;
         this.price = price;
@@ -62,8 +62,9 @@ public class Product {
         this.price = price;
     }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
+    public void setQuantity(int quantitySelected) {
+
+        quantity = quantity - quantitySelected;
     }
 
     public String toString(){

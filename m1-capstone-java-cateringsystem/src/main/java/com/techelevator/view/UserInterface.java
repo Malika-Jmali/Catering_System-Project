@@ -64,17 +64,22 @@ public class UserInterface{
 
 
 
-
-
-
-
-
-
-    public void printListOfItems(List<Product> productList) { //format this later
+    public void printListOfItems(List<Product> productList) {
+        System.out.printf("Code\tProduct Name\t\tType\tPrice\tQuantity %n");
+        System.out.printf("----------------------------------------------------%n");
         for (Product product : productList) {
-            System.out.println(product.getCode() + " " + product.getName() + " " + product.getType() + " $" + product.getPrice() + "  " + product.getQuantity());
+            System.out.printf("%-5s %-22s %-6s %-9.2f %-3d %n", product.getCode(),product.getName(),product.getType(),product.getPrice(),product.getQuantity());
         }
         System.out.println("\n");
+    }
+
+    public void printProductByCode(Product singleProduct) {
+        System.out.printf("Code\tProduct Name\t\tType\tPrice\tQuantity %n");
+        System.out.printf("----------------------------------------------------%n");
+        if(singleProduct != null) {
+            System.out.printf("%-5s %-22s %-6s %-9.2f %-3d %n", singleProduct.getCode(), singleProduct.getName(), singleProduct.getType(),singleProduct.getPrice(), singleProduct.getQuantity());
+            System.out.println("\n");
+        }
     }
 
     public void quit() {

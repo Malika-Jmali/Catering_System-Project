@@ -1,9 +1,6 @@
 package com.techelevator;
 
-import com.techelevator.view.CashRegister;
-import com.techelevator.view.Inventory;
-import com.techelevator.view.ReaderFile;
-import com.techelevator.view.UserInterface;
+import com.techelevator.view.*;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -14,6 +11,7 @@ public class CateringSystemCLI {
 	private Inventory inventory;
 	private CashRegister register;
 	private Product productItem;
+	private ShoppingCart cart;
 
 //	private final String DISPLAY_ALL_CATERING_ITEMS = "1";
 //	private final String ORDER = "2";
@@ -25,6 +23,7 @@ public class CateringSystemCLI {
 			inventory = new Inventory();
 			register = new CashRegister(0);
 			productItem = new Product();
+			cart = new ShoppingCart();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,24 +58,26 @@ public class CateringSystemCLI {
 					else if (choice.equals("2")) {
 						List<Product> everything = inventory.retrieveAllItems(); //same as option 1 from main menu
 						ui.printListOfItems(everything);
-						String itemCode = ui.printItemCode(); //Customer returns the selected item by itemCode
-						List<Product> product = inventory.retrieveItemByProductCode(itemCode);
-//						if(product == null) {
-//							ui.printItemDoesNotExist();
-//						} else {
-							ui.printListOfItems(product);
+
+						String itemCode = ui.printItemCode();
+						Product productByCode = inventory.retrieveItemByProductCode(itemCode); //getting product by productCode
+						if(productByCode == null) { //if code does not exist, print doesNotExist
+							ui.printItemDoesNotExist();
+
+						} else {
+							ui.printProductByCode(productByCode); //if found
 							int itemQuantity = ui.askQuantity();
-							productItem.updateQuantity(itemQuantity);
+							cart.addItems(productByCode);
 
+							productByCode.updateQuantity(itemQuantity);
+							register.minusMoney(productByCode.getPrice(), itemQuantity);
 
-//							if (itemQuantity > productItem.getQuantity()) { //Still not sure if product.size() is coded correctly
-//								ui.printSoldOutMessage();
-//							}
-//							if (itemQuantity <= product.size() && product != null) {
-//
-//							}
-//						}
+							if (itemQuantity > productByCode.getQuantity()) { //need to make sure no money is charged if sold out
+								//and quantity doesn't go to negative....
+								ui.printSoldOutMessage();
+							}
 
+						}
 
 					}
 					else if (choice.equals("3")) {
@@ -84,8 +85,6 @@ public class CateringSystemCLI {
 						isSubMenuRunning = false;
 					}
 				}
-
-
 
 
 			} else if (response.equals("3")) {

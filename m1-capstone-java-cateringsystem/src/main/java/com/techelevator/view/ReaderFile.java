@@ -29,19 +29,23 @@ public class ReaderFile {
             String[] fields = record.split("\\|");
 
             if (fields[3].equals("A")) {
-                Product product = new Appetizer(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3], 50);
+                Product product = new Appetizer(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                product.setQuantity(50);
                 allItems.put(fields[0], product);
             }
             if (fields[3].equals("B")) {
-                Product product1 = new Beverage(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3], 50);
+                Product product1 = new Beverage(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                product1.setQuantity(50);
                 allItems.put(fields[0], product1);
             }
             if (fields[3].equals("D")) {
-                Product product2 = new Dessert(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3], 50);
+                Product product2 = new Dessert(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                product2.setQuantity(50);
                 allItems.put(fields[0], product2);
             }
             if (fields[3].equals("E")) {
-                Product product3 = new Entree(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3], 50);
+                Product product3 = new Entree(fields[0], fields[1], Double.parseDouble(fields[2]), fields[3]);
+                product3.setQuantity(50);
                 allItems.put(fields[0], product3);
             }
 
@@ -51,9 +55,6 @@ public class ReaderFile {
 
 }
 
-    public static void main(String[] args) {
-
-    }
 
 
 

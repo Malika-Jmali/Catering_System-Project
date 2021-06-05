@@ -24,15 +24,15 @@ public class CashRegister {
     //methods
     public double addMoney(double dollar) {
         if (balance + dollar > 5000) {
-            balance = balance;
+            this.balance = balance;
         } else {
-            balance = balance + dollar;
+            this.balance = balance + dollar;
         }
-        return balance;
+        return this.balance;
     }
 
     public double minusMoney(double price, int quantity) {
-       balance = balance - (price * quantity);
+       this.balance = balance - (price * quantity);
        return balance;
     }
 

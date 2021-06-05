@@ -28,17 +28,9 @@ public class Inventory {
         return everything;
     }
 
-    public List<Product> retrieveItemByProductCode(String productCode) {
+    public Product retrieveItemByProductCode(String productCode) {
 
-        List<Product> itemByCode = new ArrayList<>();
-
-        for(Product product : inventoryMap.values()) {
-            if (product.getCode().equals(productCode)) {
-                itemByCode.add(product);
-            }
-
-        }
-            return itemByCode;
+       return inventoryMap.get(productCode);
     }
 
 
