@@ -81,12 +81,11 @@ public class CateringSystemCLI {
 							else { //if all goes well
 								productByCode.setQuantity(productByCode.getQuantity() - itemQuantity);
 								register.minusMoney(productByCode.getPrice(), itemQuantity);
-								Product add = new Product(productItem.getCode(), productItem.getName(), productItem.getPrice(), productItem.getType());
-								add.setQuantity(itemQuantity);
-								cart.addItems(add); //be careful with this code
+//								Product add = new Product(productItem.getCode(), productItem.getName(), productItem.getPrice(), productItem.getType());
+//								add.setQuantity(itemQuantity);
+//								cart.addItems(add); //be careful with this code
 
-//								ShoppingCart add = new ShoppingCart();
-//								add.addItems(productByCode);
+								cart.addItems(productByCode);
 
 
 							}
