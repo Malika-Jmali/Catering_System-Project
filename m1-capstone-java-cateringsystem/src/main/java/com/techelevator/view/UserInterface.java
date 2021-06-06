@@ -65,9 +65,10 @@ public class UserInterface{
 
     public int askToAddMoney() {
         System.out.println("How much money would you like to add in whole dollars? \n");
-        int moneyToAdd = scanner.nextInt();
-        scanner.nextLine();
-        return moneyToAdd;
+        String moneyToAdd1 = scanner.nextLine();
+        String moneyToAdd = moneyToAdd1.trim();
+        int moneyAsInteger = Integer.parseInt(moneyToAdd);
+        return moneyAsInteger;
     }
 
     public void printListOfItems(List<Product> productList) {
@@ -135,12 +136,13 @@ public class UserInterface{
             } else if (r >= 10) {
                 r -= 10;
                 dime++;
-            } else if (r >= 5) {//stuck here sometimes, may be bc of decimals. Debugger would say the statement is true, but wouldn't jump into it.
+            } else if (r >= 5) {
                 r -= 5;
                 nickel++;
             }
         }
         System.out.println("Please take your change: ");
+        System.out.println("");
         System.out.println(twenty + " $20 bills / " + ten + " $10 bills / " + five + " $5 bills / " + one + " $1 bills / " + quarter + " quarters / " + dime + " dimes / " + nickel + " nickels \n");
     }
 
