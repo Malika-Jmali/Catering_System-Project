@@ -10,10 +10,6 @@ public class Appetizer extends Product {
         super(code, name, price, type);
     }
 
-    @Override
-    public int addQuantity(int quantitySelected) {
-        return quantitySelected;
-    }
 
     @Override
     public int getQuantity() {

@@ -14,8 +14,6 @@ public class CateringSystemCLI {
 	private Product productItem;
 	private ShoppingCart cart;
 
-//	private final String DISPLAY_ALL_CATERING_ITEMS = "1";
-//	private final String ORDER = "2";
 
 	public CateringSystemCLI(UserInterface ui) {
 
@@ -38,6 +36,8 @@ public class CateringSystemCLI {
 	}
 
 	public void run() {
+
+		ui.printWelcomeMessage();
 
 		boolean isRunning = true;
 		while(isRunning) {
@@ -79,30 +79,24 @@ public class CateringSystemCLI {
 								ui.printInsufficientBalance();
 							}
 							else { //if all goes well
-								productByCode.setQuantity(productByCode.getQuantity() - itemQuantity);
-								register.minusMoney(productByCode.getPrice(), itemQuantity);
-//								Product add = new Product(productItem.getCode(), productItem.getName(), productItem.getPrice(), productItem.getType());
-//								add.setQuantity(itemQuantity);
-//								cart.addItems(add); //be careful with this code
-
-								cart.addItems(productByCode);
-
-
+								inventory.reduceInventory(itemCode, itemQuantity);
+								register.reduceBalance(productByCode.getPrice(), itemQuantity); //same as minusMoney() from previous variable
+								cart.addItem(itemCode, productByCode.getName(), productByCode.getPrice(), productByCode.getType(), itemQuantity);
+								//instead of passing whole Product, we add each parameter one by one
 							}
 						}
-
 					}
 					else if (choice.equals("3")) {
 						List<Product> customerCart = cart.getShoppingCartItem();
 						ui.printReport(customerCart);
+						ui.giveChange(register.getBalance());
 
 
 						isSubMenuRunning = false;
-						register.setBalance(0); //?
+						register.setBalance(0);
 						cart.emptyCart();
 					}
 				}
-
 
 			} else if (response.equals("3")) {
 				isRunning = false;
@@ -113,8 +107,3 @@ public class CateringSystemCLI {
 
 	}
 }
-
-
-
-
-

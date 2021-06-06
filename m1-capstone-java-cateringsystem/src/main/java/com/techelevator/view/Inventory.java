@@ -20,11 +20,9 @@ public class Inventory {
         List<Product> everything = new ArrayList<>();
 
         Set<String> keys = inventoryMap.keySet();
-
         for( String key: keys) {
             everything.add(inventoryMap.get(key));
         }
-
         return everything;
     }
 
@@ -33,10 +31,8 @@ public class Inventory {
        return inventoryMap.get(productCode);
     }
 
-
-
-
-
-
+    public void reduceInventory(String code, int purchaseQuantity) { //quantityOfInventory - purchaseQuantity
+        inventoryMap.get(code).setQuantity(inventoryMap.get(code).getQuantity() - purchaseQuantity);
+    }
 
 }

@@ -21,9 +21,16 @@ public class Product {
 
     }
 
-    //method
-    public int addQuantity(int quantitySelected) {
-        return quantitySelected;
+    public String getNameOfType() {
+        if(getType().equals("A")) {
+            return "Appetizer";
+        } else if (getType().equals("B")) {
+            return "Beverage";
+        } else if (getType().equals("D")) {
+            return "Dessert";
+        } else {
+            return "Entree";
+        }
     }
 
 
@@ -63,7 +70,7 @@ public class Product {
 
     public void setQuantity(int quantitySelected) {
 
-        quantity = quantity - quantitySelected;
+        quantity = quantity + quantitySelected;
     }
 
     public String toString(){

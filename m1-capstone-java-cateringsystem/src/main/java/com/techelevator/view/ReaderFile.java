@@ -15,9 +15,7 @@ public class ReaderFile {
         inventoryFile = new File("cateringsystem.csv");
     }
 
-
     public Map<String, Product> loadData() throws FileNotFoundException {
-
 
         Map<String, Product> allItems = new TreeMap<>();
 
@@ -54,9 +52,6 @@ public class ReaderFile {
         return allItems;
 
 }
-
-
-
 
 
 }

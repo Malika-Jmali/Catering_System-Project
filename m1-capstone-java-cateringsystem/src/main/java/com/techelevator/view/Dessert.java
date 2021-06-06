@@ -12,11 +12,6 @@ public class Dessert extends Product {
     }
 
     @Override
-    public int addQuantity(int quantitySelected) {
-        return quantitySelected;
-    }
-
-    @Override
     public int getQuantity() {
         return quantity;
     }
